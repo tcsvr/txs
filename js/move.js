@@ -40,3 +40,4 @@ $(".fiz:eq(0)").css("color","red")
 $(".fiz:eq(1)").css("color","green")
 $(".fiz:eq(2)").css("color","red")
 $(".fiz:eq(3)").css("color","green")
+
