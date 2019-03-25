@@ -75,9 +75,11 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container mt">
         <div class="row">
             <div class="col-lg-6 mwg">
+                <i class="fas fa-chevron-left" id="sblt"></i>
+                <i class="fas fa-chevron-right" id="sbrt"></i>
                 <img id="bcard" src="images/sb6.jpg" alt="">
                 <div class="recflex" id="xcard">
                     <img src="images/sb6.jpg" alt="">
@@ -87,10 +89,56 @@
                     <img src="images/recsb4.png" alt="">
                 </div>
             </div>
+            <div class="col-lg-5">
+                <h5>VR全景虚拟现实罗技赛车驾驶套装</h5>
+                <div class="bgc ptbo mtbo">
+                    <span class="spw">价格</span>
+                    <span><i class="fas fa-yen-sign"></i> 29887.00</span>
+                </div>
+                <div class="bdo mtbo">
+                    <span>累计评价<a href="">0</a></span>
+                    <span>送天猫积分<a href="">2988</a></span>
+                </div>
+                <div>
+                    <span>颜色分配</span>
+                    <button type="button" class="btn btn-primary">星空蓝</button>
+                    <button type="button" class="btn btn-dark">曜石黑</button>
+                    <button type="button" class="btn btn-danger">火焰红</button>
+                </div>
+                <div>
+                    <span>数量</span>
+                    <input type="text" value="1">
+                    <button>+</button>
+                    <button>-</button>
+                </div>
+                <div>
+                    <span>付款方式</span>
+                    <select class="txt" name="" id="">
+                        <option value="">微&nbsp;信</option>
+                        <option value="" selected>支付宝</option>
+                        <option value="">信用卡</option>
+                    </select>
+                </div>
+                <div>
+                    <span>总价</span>
+                    <span>29887.00</span>
+                </div>
+                <div>
+                    <button>立即购买</button>
+                    <button><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+                <div>
+                    <span>服务承若</span>
+                    <a href="">不支持七天无理由退换</a>
+                    <a href="">正品保证</a>
+                    <a href="">延保服务</a>
+                    <a href="">极速退款</a>
+                    <a href="">赠运费险</a>
+                </div>
+            </div>
         </div>
-
     </div>
-    <footer class="bgc">
+    <footer class="bgc mt">
         <div class="container">
             <div class="row ft">
                 <div class="col-lg-7">
@@ -141,15 +189,7 @@
 <link rel="stylesheet" href="./js/jquery-ui.css">
 <script src="./js/move.js"></script>
 <script>
-$("#xcard img").each(function(index){
-    $(this).click(function(index){
-    $("#bcard")=($(this)[0])
-    // var htmlimg = $(this).innerHTml
-    // console.log(htmlimg)
-    // console.log($("#bcard").html(htmlimg))
-    // $(this).replaceAll($("#bcard"))
-    // var bcard =document.getElementById("bcard")
-    // bcard.innerHTml = this
-    console.log( $("#bcard")[0])
-})})
+$("#xcard img").click(function(){
+    $("#bcard").attr($(this)[0]);
+})
 </script>

@@ -562,7 +562,7 @@ font-size: 22px;
 .flexb{
     display: flex;
     padding: .5em 0;
-    border-top: 1px dotted #999;
+    border-top: 1px dotted rgb(54, 27, 27);
     border-bottom: 1px dotted #999;
     align-items: center;
 }
@@ -588,8 +588,58 @@ font-size: 22px;
 }
 .recflex img{
     width: 20%;
-    height:100px;
+    height: 100px;
+}
+.mwg{
+    position: relative;
+    height: 100%;
 }
 .mwg>img{
-    width: 100%
+    width: 100%;
+    height: 90%;
+}
+#sblt{
+    position: absolute;
+    top: 40%;
+    left: 1em;
+    font-size: 2.5em;
+    color: rgba(37, 240, 11);
+    padding: 0.1em;
+    background-color: rgba(37, 240, 11, 0.245);
+}
+#sbrt{
+    position: absolute;
+    top: 40%;
+    right: 1em;
+    font-size: 2.5em;
+    color: rgba(37, 240, 11);
+    padding: 0.1em;
+    background-color: rgba(37, 240, 11, 0.245);
+}
+.ptbo{
+    padding: 0.5em;
+}
+.ptbo span:last-child{
+    font-size: 1.5em;
+    color: red;
+    font-weight: bolder;
+}
+.spw{
+    display: inline-block;
+    width: 5em;
+}
+.bdo{
+    border-top: .1em dotted #666;
+    border-bottom: .1em dotted #666;
+    padding: .5em 0;
+}
+.bdo span:first-child{
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+}
+.bdo span:last-child{
+    display: inline-block;
+    width: 49%;
+    text-align: center;
 }
