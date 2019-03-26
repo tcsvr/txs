@@ -623,10 +623,18 @@ font-size: 22px;
     font-size: 1.5em;
     color: red;
     font-weight: bolder;
+    vertical-align: center;
+}
+#dj{
+    position: relative;
+    left: .2em;
+    top: .1em;
 }
 .spw{
     display: inline-block;
     width: 5em;
+    text-align-last: justify;
+    margin-right: 1em;
 }
 .bdo{
     border-top: .1em dotted #666;
@@ -637,6 +645,7 @@ font-size: 22px;
     display: inline-block;
     width: 49%;
     text-align: center;
+    border-right:  .1em dotted #666;
 }
 .bdo span:last-child{
     display: inline-block;
