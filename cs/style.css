@@ -587,8 +587,8 @@ font-size: 22px;
     display: flex;
 }
 .recflex img{
-    width: 20%;
-    height: 100px;
+    width: 25%;
+    height: 25%;
 }
 .mwg{
     position: relative;
@@ -651,4 +651,69 @@ font-size: 22px;
     display: inline-block;
     width: 49%;
     text-align: center;
+}
+#sl{
+    width: 3em;
+    text-align: center;
+}
+#pay{
+    width: 6em;
+}
+.bton{
+    text-align: center;
+    margin: 1em auto;
+}
+.bton button{
+    display: inline-block;
+    width: 8em;
+    height: 3em;
+    margin: 0 1em;
+    border:none;
+}
+.bton button:hover{
+    opacity: .8;
+}
+.bton button:first-child{
+    background: rgba(243, 15, 45, 0.3);
+    color: red;
+    border: 1px solid red;
+}
+.bton button:last-child{
+    background: rgba(243, 15, 45);
+    color: #fff;
+}
+.fw{
+    display: flex;
+}
+
+.fw span{
+    color: #666;
+    display: inline-block;
+    width: 6em;
+    font-size: .8em;
+
+}
+.fw a{
+    display: inline-block;
+    margin: 0 .5em;
+    font-size: .8em;
+    position: relative;
+    top:-.2em;
+}
+.lun img{
+    width: 100%;
+}
+.lun ul{
+    padding: 0;
+}
+.sbfx{
+    display: flex;
+    justify-content: space-between;
+
+}
+.sbfx div:first-child{
+    width: 75%;
+}
+.lun{
+    width: 20%;
 }
