@@ -1,183 +1,41 @@
-<?php
+﻿<?php
 
-// header('content-type:text/html; charset=utf-8');
-//封装一个php的弹窗
+
+//封装一个php弹窗
 function alert($con,$url=''){
     echo "<script>";
     if($url){
+        //有url地址跳转到url地址
         echo "alert('{$con}');window.location.href='{$url}';";
     }else{
+        //没有url地址，跳转到上一页历史
         echo "alert('{$con}');window.history.go(-1);";
     }
     echo "</script>";
     exit;
 }
 
-function pre($con){
+
+//打印数组
+function pre($a){
     echo '<pre>';
-    print_r($con);
+    print_r($a);
     echo '</pre>';
-}
-
-function h(){
-    echo '<hr>';
+	exit;
 }
 
 
-function b(){
-    echo '<br>';
-}
-
-
-function ct($v){
-    $v = filectime($v);
-    echo date('Y-m-d H:i:s',$v);
-}
-
-
-function mt($v){
-    $v = filemtime($v);
-    echo date('Y-m-d H:i:s',$v);
-}
-
-
-
-
-function nine($row=9,$col=9){
-echo '<table border=1>';
-        for($ro=1;$ro<=$row;$ro++){
-            echo "<tr>";
-            for($co=1;$co<=$col;$co++){
-                $to=$ro*$co;
-                $sum = $to;
-                if($ro>=$co){
-                    echo '<td>'.$ro.'*'.$co.'='.$sum.'</td>';
-                }
-                else{
-                    echo "<td></td>";
-                }         
-            }
-            echo "</tr>";  
-        }
-echo '</table>';
-
-}
-
-function star( $num = 11){
-    for($a=1; $a<=$num; $a++){
-    for($b=$num-1; $b>=$a; $b--){
-        echo '&nbsp;';
-    }
-    for($i=1; $i<=$a*2-1; $i++){
-        if($i%2==1){
-            echo '*';
-        }else{
-            echo '&nbsp;';
-        }
-        // if($i>1 && $i<$a*2-1 && $i!=5 && $i!=10 && $i!=15){
-        //     echo '&nbsp;';
-        // }else{
-        //     echo '*';
-        // }
-    }
-    echo '<br>';
-    }
-
-}
-
-function tg($a=3,$b=5){
-	// 124678910 没有3 5
-	for($i=1; $i<=10; $i++){
-		/*if($i==3 || $i==5){
-			continue;
-		}*/
-		if($i!=$a && $i!=$b){
-			echo $i;
-		}
-	}
-}
-
-function sum ($max = 10){
-$sum = 0;
-$box = '';
-for($i=1; $i<=$max; $i++){
-	// 过程
-	if($i<$max){
-		// $box = $box . $i.'+';
-		$box .= $i.'+';
-	}else{
-		$box .= $i.'=';
-	}
-
-	// 结果
-	$sum = $sum+$i;
-	// $sum += $i;
-}
-
-echo $box.$sum;
-
-}
-
-function comp($num1 = 10,$num2 = 11,$num3 = 12){
-    if($num1>$num2){
-        if($num1>$num3){
-            echo $num1;
-        }else{
-            echo $num3;
-        }
-    }else {
-        if($num2>$num3){
-            echo $num2;
-        }else{
-            echo $num3;
-        }
-    }
-
-}
-
-function qqt($a=62,$b=5){
-    for($i = 1; $i <= $a; $i++){
-        if($i%$b==1){
-            echo '<br>';
-        }
-        if($i<10){
-            echo '<img src="images/0'.$i.'.gif" alt=""/>';
-        }else{
-            echo '<img src="images/'.$i.'.gif" alt=""/>';
-        }
-    }
-    
-}
-
-function chess($ro=8,$co=8){
-        echo '<table width="270px" cellspacing="0px" cellpadding="0px" border="1px">';
-        for($row=1;$row<=$ro;$row++){
-            echo "<tr>";
-            for($col=1;$col<=$co;$col++){
-                $to=$row+$col;
-                if($to%2==0){
-                    echo "<td height=30px width=30px bgcolor=#FFFFFF></td>";
-                }
-                else{
-                    echo "<td height=30px width=30px bgcolor=#000000></td>";
-                }
-            }
-            echo "</tr>";
-        }
-    echo '</table>';
-}
-
-
+//文件大小
 function getfilesize($filename){
 	$fs = filesize($filename);
 	if($fs>1024 && $fs<pow(1024,2)){
-		return (floor(($fs/1024)*100)/100).' KB';
+		return (floor(($fs/1024)*100)/100).'KB';
 	}else if($fs>pow(1024,2) && $fs<pow(1024,3)){
-		return (floor(($fs/pow(1024,2))*100)/100).' MB';
+		return (floor(($fs/pow(1024,2))*100)/100).'MB';
 	}else if($fs>pow(1024,3) && $fs<pow(1024,4)){
-		return (floor(($fs/pow(1024,3))*100)/100).' GB';
+		return (floor(($fs/pow(1024,3))*100)/100).'GB';
 	}else{
-		return $fs.' B';
+		return $fs.'B';
 	}
 }
 
@@ -185,6 +43,8 @@ function getfilesize($filename){
 function getextention($str){
 	$ext = substr(strrchr($str, '.'),1);
 	switch($ext){
+		case 'txt': return 'txt 文件';
+		break;
 		case 'html': return 'html 文件';
 		break;
 		case 'css': return 'css 文件';
@@ -201,141 +61,187 @@ function getextention($str){
 		break;
 		case 'gif': return 'gif 图片';
 		break;
-		case 'txt': return 'txt 文件';
-		break;
-		case 'doc': return 'word 文件';
-		break;
 		default : return '未知类型';
 	}
 }
 
+// function uploadimg($upimg){
+//     // echo '提交成功';
+//     $error = $_FILES["$upimg"]['error'];
+
+//     if($error != 0){
+//         if($error == 4){
+//             alert("请选择上传文件");
+//         }else{
+//             alert("上传失败，请重新上传");
+//         }
+//     }
+
+//     $filename = $_FILES["$upimg"]['name'];
+//     $ext = substr(strrchr($filename,'.'),1);
+//     $extarr = array('jpg','jpeg','gif','png');
+//     if(!in_array($ext,$extarr)){
+//         alert("图片格式只能为jpg，jpeg，gif，png");
+//     }
+//     // echo $ext;
+//     $size = 81920;
+//     $fsize = $_FILES["$upimg"]['size'];
+//     if($fsize> $size){
+//         alert("文件过大，不能超过80k");
+//     }
+
+//     $childpath = date('Y/m/d/',time());     //获取当前时间戳格式化
+//     $path = 'images/'.$childpath;           //作为文件夹
+//     if(!file_exists($path)){                //判断文件夹是否存在
+//         mkdir($path,0777,true);             //如果不存在则创建一个新文件
+//     }
+//     $tmp = $_FILES["$upimg"]['tmp_name'];
+//     $fname = time().rand(10000,99999);
+
+//     copy($tmp,$path.$fname.'.'.$ext);
+
+//     return $path.$fname.'.'.$ext;
+    
+    
+// }
 
 
-
-
-function repay($a,$b){
-    $a = 20000;
-$b = 1000;
-
-repay($a,$b);
-
-    static $count = 1;
-    $new = $a-$b;
-    echo "我第{$count}个月还{$b}，还剩{$new}<br>";
-    if($new>0){
-        $count++;
-        repay($new,$b);
-    }else{
-        exit;
-    }
-}
-
-
+/*
 
 
 /**
- * 文件上传
- * 
- * 
- * 
- */
-function upload($name,$size = 1048576,$extArr = array('jpg','jpeg','gif','png')){
-	$error = $_FILES[$name]['error'];
+*中文字符串替换带截取
+*@param $str [project string]
+*
+*
+*/
+function mb_replace_substr($str,$length,$start=0){
+    $str = preg_replace("/<[^<>]+>/",'', $str); //过滤标签
 
-	if($error!=0){
-		if($error==4){
-			alert('请选择上传的文件');
-		}else{
-			alert('上传失败，请重新上传');
-		}
-	}
-
-
-	$filename = $_FILES[$name]['name'];
-	$ext = substr(strrchr($filename, '.'),1);
-	
-	if(!in_array($ext,$extArr)){
-		alert("您上传的文件类型错误，请上传jpg、jpeg、png、gif");
-	}
-	
-	
-	$fsize = $_FILES[$name]['size'];
-	if($fsize>$size){
-		alert("文件过大，不能超过2M");
-	}
-	
-	$childPath = date('Y/m/d/',time());
-	$path = 'uploads/'.$childPath;
-
-	if(!file_exists($path)){
-		mkdir($path,0777,true);
-	}
-	
-	$fname = time().rand(10000,99999);
-
-	$tmp = $_FILES[$name]['tmp_name'];
-	
-	$imgpath = $path.$fname.'.'.$ext;
-
-	copy($tmp,$imgpath);
-	return $imgpath;
+    return mb_substr($str,$start,$length,'utf-8');
 }
 
 
+/**
+ * $name 上传域的name名
+ * $uri  存放文件的目录名
+ * $size  上传文件的大小
+ * $type  上传文件的类型
+ */
+ function  upload($name,$uri,$size='1048576',$type=array('jpg','jpeg','gif','png')){
+	if($_FILES[$name]['error']>0){
 
+		switch ($_FILES[$name]['error']) {
+			case 1:
+				$res['msg'] = "文件大于2M，请重新上传";
+				break;
+			case 2:
+				$res['msg'] = "文件指定大小，请重新上传";
+				break;
+			case 3:
+				$res['msg'] = "上传失败，请重新上传";
+				break;
+			case 4:
+				$res['msg'] = "请选择文件";
+				break;
+			default:
+				$res['msg'] = '未知错误';
+				break;
+		}
+		$res['error'] = 1;
+		return $res;
+	}
+	if($_FILES[$name]['size']>$size){
+		$res['msg'] = "文件大于指定大小，请重新上传";
+		$res['error'] = 1;
+		return $res;
+	}
 
-// function fload(){ 
+	$path = pathinfo($_FILES[$name]['name']);
+	$ext = $path['extension'];//获取后缀。
 
-// $fl = $_FILES[$name]['name'];
-// $se = substr(strrchr($fl,'.'),'1');
-// $set = array('png','gif','jpg','jpeg');
-// if(!in_array($se,$set)){
-//     alert('文件格式不正确，请使用 jpg png,gif,jpeg');
-// }
+	if(!in_array($ext,$type)){
+		$res['msg'] = "文件类型错误，请重新上传";
+		$res['error'] = 1;
+		return $res;
+	}
 
-// $size = 402400;
-// $fz = $_FILES[$name]['size'];
-// if($fz>$size){
-//     alert("文件大小不能超过2M");
-// }
+	$time = time();
+	$tmpdir = date('Y/m',$time);
+	$dir = rtrim($uri,'/').'/'.$tmpdir;
+	// echo $dir;exit;
+	if(!is_dir($dir)){
+		// 如果目录不存在，则创建目录
+		mkdir($dir,0777,true);
+	}
+	do{
+		$filename = $time.rand(0,99999);
+		$file = $filename.'.'.$ext;
+	}while(is_file($dir.'/'.$file));
+	move_uploaded_file($_FILES[$name]['tmp_name'], $dir.'/'.$file);
+	$res['error'] = 2;
+	$res['msg'] = "上传成功";
+	$res['filename'] = $tmpdir.'/'.$file;
+	return $res;
+}
 
-// $er = $_FILES[$name]['error'];
-// if($er!=0){
-//     if($er==4){
-//         alert('请选择上传文件');
-//     }else{
-//         alert('请重新上传文件');
-//     }
-// }
-// echo $se;
+function thumb_img($img,$son_width,$son_height,$url,$thumpath){
+	$filename=$img;
+	$info=getimagesize($filename);
+	// print_r($info);
+	$width=$info[0];
+	$height=$info[1];
+	// 打开图片
+	if($info[2]==1){
+	    $parent=imagecreatefromgif($filename);
+	}elseif($info[2]==2){
+	    $parent=imagecreatefromjpeg($filename);
+	}elseif($info[2]==3){
+	    $parent=imagecreatefrompng($filename);
+	}
+	// 创建新的图层
+	// $son_width=300;
+	// $son_height=50;
+	// 等比例缩放
+	// $son_height=ceil(($height*$son_width)/$width);
+	// 新建图像
+	$son=imagecreatetruecolor($son_width,$son_height);
 
-// $tmp = $_FILES[$name]['tmp_name'];
-// $fm = time().rand(10000,99999);
-// $chid = date('Y/m/d/',time());
-// $spth = 'images/'.$chid;
-// if(!file_exists($spth)){
-//     mkdir($spth,0777,true);
-// }
-// copy($tmp,$spth.$fm.'.'.$se);
-// // $od = $tmp,$spth.$fm.'.'.$se;
-// // return $od;
+	// $son新建图像
+	// $parent原图像
+	// 0,0 目标图片的y轴和x轴
+	// 0,0 原图片的y轴和x轴
+	imagecopyresized($son,$parent,0,0,0,0,$son_width,$son_height,$width,$height);
+	// 获取后缀名
+	$path=pathinfo($filename,PATHINFO_EXTENSION);
+	// 设置文件名
+	// $pathname=mt_rand(1000,9999).'.'.$path;
+	$pathname=$thumpath;
 
-// }
+	$dir=date("Y-m/d");
+	if(!is_dir($url."/".$dir)){
+		mkdir($url."/".$dir,0700,true);
+	}
+	$news_filename=$dir."/".$pathname;
 
+	// dump($news_filename);exit;
+	$pathname=$url."/".$news_filename;
+	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	// 生成图片
+	if($info[2]==1){
+	    imagegif($son,$pathname);
+	}elseif($info[2]==2){
+	    imagejpeg($son,$pathname);
+	}elseif($info[2]==3){
+	    imagepng($son,$pathname);
+	}
+	// 销毁原图片
+	imagedestroy($parent);
+	// 销毁目标图片
+	imagedestroy($son);
+	return $news_filename;
+}
 
 
 
