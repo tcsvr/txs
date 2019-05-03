@@ -1,0 +1,38 @@
+<?php  include('./view/common/header.html') ; ?>
+
+    <nav aria-label="breadcrumb" class=" container mt flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>index.php">主页</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>new.php">新闻动态</a></li>
+            <li class="breadcrumb-item active" aria-current="page"> <?php echo $newdet['n_title'] ?></li>
+        </ol>
+        <a href="new.php">更多</a>
+    </nav>
+    <div class="container"> 
+        <div class="row">
+        <div class="col-lg-8 xsy ">
+
+            <?php echo $newdet['n_detai'] ?>
+
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                  相关推荐
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <?php foreach ($tnew as $v) { ?>
+                    <li class="list-group-item">
+                      <a href="newdet.php?nid=<?php echo $v['n_id'] ?>"><?php echo $v['n_title'] ?></a>
+                    </li>
+
+                    <?php } ?>
+                </ul>
+              </div>
+        </div>
+    </div>
+    </div>
+<!-- footer start -->
+<?php include('view/common/footer.html') ?>
+<!-- footer end -->

@@ -5,120 +5,77 @@
 
 <nav aria-label="breadcrumb" class=" container mt flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">主页</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>index.php">主页</a></li>
             <li class="breadcrumb-item active" aria-current="page">新闻动态</li>
         </ol>
         <a href="">更多</a>
     </nav>
     <!-- news list start -->
-
     <div class="new container mpz">
-            <a href="new.html">企业行业</a> 
+            <a href="<?php echo _WEB_ ?>new.php">新闻动态</a> 
             <div class="row mh">
                 <div class="col-lg-6">
                     <div class="card mbo htb">
-                        <img class="card card-img-top" src="<?php echo $newz['n_img'] ?>" alt="Card image cap">
+                        <img class="card card-img-top" src="<?php echo _UPLOAD_.$newz['n_img'] ?>" alt="Card image cap">
                         <div class="card-body feb">
                                 <div class="pmo">
                                     <h5 class="card-title"><?php echo $newz['n_title'] ?></h5>
                                     <p class="card-text"><?php echo $newz['n_txt'] ?></p>
                                 </div>
-                                <a href="xsy.html" class="btn btn-primary wds">了解详情</a>
+                                <a href="<?php echo _WEB_ ?>newdet.php?nid=<?php echo $newz['n_id'] ?>" class="btn btn-primary wds">了解详情</a>
                             </div>
                         </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="card text-center">
-                        <nav>
+                        <nav id="csnav">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
     
                                 <?php foreach($new_class as $v) { ?>
     
-                                <a class="nav-item nav-link <?php  if($v['nl_id']==$nlid) echo 'active' ?>" id="nav-home-tab" 
+                                    <a class="nav-item nav-link <?php  if($v['nl_id']==$nlid) echo 'active' ?>" id="nav-home-tab" 
                                     data-toggle="tab" href="?nlid=<?php echo $v['nl_id'] ?>"
                                     role="tab" aria-controls="nav-home" aria-selected="true">
+    
                                     <?php echo $v['nl_title'] ?></a>
     
                                 <?php } ?>    
     
                             </div>
                         </nav>
+    
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade  show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
-                            <?php foreach($new as $v) { ?>
-                                <div class="card">
-                                    <div class="card-body text-success tal">
-                                        <a href="nesdm.html" class="tdn">
-                                            <h5 class="card-title"><?php echo $v['n_title'] ?></h5>
-                                        </a>
-                                        <a href="nesdm.html" class="tdn">
-                                            <p class="card-text"><?php echo $v['n_txt'] ?></p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <?php } ?>
-    
                             </div>
                         </div>
+    
+                        <!-- <script src="jquery-1.11.3.min.js"></script> -->
+                        <script>
+                                $.get('ajax.php',{caid:1},function(result){
+                                $('#csnav').children().children().eq(0).addClass('active')
+                                $('#nav-home').append(result);
+                                })
+                            // $('#csu').append(result);
+                            $('#csnav').children().children().click(function(){
+                                var index = $(this).index()+1
+                                // alert(index)
+                                $('#csnav').children().removeClass('active')
+                                $(this).children().addClass('active')
+                                $.get('ajax.php',{nlid:index},function(result){
+                                    // alert(result)
+                                    $('#nav-home').empty()
+                                    $('#nav-home').append(result);
+                                })
+                            })
+                        </script>
+            
+    
                     </div>
                 </div>
             </div>
         </div>
         <!-- news list end -->
-        <div class="new container mpz">
-                <a href="new.html">行业新闻</a> 
-                <div class="row mh">
-                    <div class="col-lg-6">
-                        <div class="card mbo htb">
-                            <img class="card card-img-top" src="<?php echo $newz['n_img'] ?>" alt="Card image cap">
-                            <div class="card-body feb">
-                                    <div class="pmo">
-                                        <h5 class="card-title"><?php echo $newz['n_title'] ?></h5>
-                                        <p class="card-text"><?php echo $newz['n_txt'] ?></p>
-                                    </div>
-                                    <a href="xsy.html" class="btn btn-primary wds">了解详情</a>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card text-center">
-                            <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        
-                                    <?php foreach($new_class as $v) { ?>
-        
-                                    <a class="nav-item nav-link <?php  if($v['nl_id']==$nlid) echo 'active' ?>" id="nav-home-tab" 
-                                        data-toggle="tab" href="?nlid=<?php echo $v['nl_id'] ?>"
-                                        role="tab" aria-controls="nav-home" aria-selected="true">
-                                        <?php echo $v['nl_title'] ?></a>
-        
-                                    <?php } ?>    
-        
-                                </div>
-                            </nav>
-                            <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade  show active" id="nav-home" role="tabpanel"
-                                aria-labelledby="nav-home-tab">
-                                <?php foreach($new as $v) { ?>
-                                    <div class="card">
-                                        <div class="card-body text-success tal">
-                                            <a href="nesdm.html" class="tdn">
-                                                <h5 class="card-title"><?php echo $v['n_title'] ?></h5>
-                                            </a>
-                                            <a href="nesdm.html" class="tdn">
-                                                <p class="card-text"><?php echo $v['n_txt'] ?></p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <?php } ?>
-        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <!-- footer start -->
+        <!-- footer start -->
 <?php include('view/common/footer.html') ?>
 <!-- footer end -->

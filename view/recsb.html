@@ -4,8 +4,8 @@
 
     <nav aria-label="breadcrumb" class=" container mt flex">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">主页</a></li>
-            <li class="breadcrumb-item"><a href="rec.html">产品展示</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>index.html">主页</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>rec.html">产品展示</a></li>
             <li class="breadcrumb-item active" aria-current="page">VR 设备</li>
         </ol>
         <a href="">更多</a>
@@ -16,7 +16,7 @@
             <?php foreach($recsb as $v) { ?>
             <div class="col-lg-4">
                 <div class="card mbo">
-                    <img class="card-img-top" src="<?php echo $v['r_img'] ?>" alt="Card image cap">
+                    <img class="card-img-top" src="<?php echo _UPLOAD_.$v['r_img'] ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $v['r_title'] ?></h5>
                         <p class="card-text"><?php echo $v['r_txt'] ?></p>

@@ -1,0 +1,162 @@
+
+<!-- header start -->
+<?php  include('./view/common/header.html') ; ?>
+    <!-- header start -->
+    <div class="container mt">
+        <div class="row">
+            <div class="col-lg-5 mwg mbo">
+                <!-- <i class="fas fa-chevron-left" id="sblt"></i>
+                <i class="fas fa-chevron-right" id="sbrt"></i> -->
+                <img id="bcard" src="<?php echo _IMG_ ?>sb6.jpg" alt="">
+                <div class="recflex" id="xcard">
+                    <img src="<?php echo _IMG_ ?>sb6.jpg" alt="">
+                    <img src="<?php echo _IMG_ ?>recsb1.jpg" alt="">
+                    <img src="<?php echo _IMG_ ?>recsb2.jpg" alt="">
+                    <img src="<?php echo _IMG_ ?>recsb4.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-7 sbfx">
+                <div>
+                    <h5>VR全景虚拟现实罗技赛车驾驶套装</h5>
+                    <div class="bgc ptbo mtbo">
+                        <span class="spw">价格</span>
+                        <span><i class="fas fa-yen-sign"></i><span id="dj">29887.00</span> </span>
+                    </div>
+                    <div class="bdo mtbo">
+                        <span>累计评价<a href="">0</a></span>
+                        <span>送天猫积分<a href="">2988</a></span>
+                    </div>
+                    <div class="mtbo">
+                        <span class="spw">库存</span>
+                        <span id="kc">16</span>
+                    </div>
+                    <div class="mtbo">
+                        <span class="spw">颜色分配</span>
+                        <button type="button" class="btn btn-primary">星空蓝</button>
+                        <button type="button" class="btn btn-dark">曜石黑</button>
+                        <button type="button" class="btn btn-danger">火焰红</button>
+                    </div>
+                    <div class="mtbo">
+                        <span class="spw">数量</span>
+                        <input type="text" value="1" id="sl">
+                        <button id="add">+</button>
+                        <button id="min">-</button>
+                    </div>
+                    <div class="mtbo">
+                        <span class="spw">付款方式</span>
+                        <select class="txt" name="" id="pay">
+                            <option value="">微&emsp;信</option>
+                            <option value="" selected>支付宝</option>
+                            <option value="">信用卡</option>
+                        </select>
+                    </div>
+                    <div class="mtbo">
+                        <span class="spw">总价</span>
+                        <span id="bsum">29887.00</span>
+                    </div>
+                    <div class="bton">
+                        <button>立即购买</button>
+                        <button><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                    </div>
+                    <div class="mtbo fw">
+                        <span>服务承若</span>
+                        <div>
+                        <a href="">不支持七天无理由退换</a>
+                        <a href="">正品保证</a>
+                        <a href="">延保服务</a>
+                        <a href="">极速退款</a>
+                        <a href="">赠运费险</a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="lun">
+                        <span>猜你喜欢</span>
+                        <ul>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb1.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb2.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb3.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb4.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb5.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                            <li>
+                                <img src="<?php echo _IMG_ ?>sb6.jpg" alt="">
+                                <p><i class="fas fa-yen-sign"></i>11888.00</p>
+                            </li>
+                        </ul>
+                        <i class="fas fa-chevron-up" id="sup"></i>
+                        <i class="fas fa-chevron-down" id="sdn"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- footer start -->
+<?php include('view/common/footer.html') ?>
+<!-- footer end -->
+
+</html>
+<script src="<?php echo _JS_ ?>jquery-ui.js"></script>
+<link rel="stylesheet" href="<?php echo _JS_ ?>jquery-ui.css">
+<script src="<?php echo _JS_ ?>move.js"></script>
+<script>
+$("#xcard img").click(function(){
+    $("#bcard").attr($(this)[0]);
+});
+/*
+    var val = $("#sl").val()
+    var sl = $("#sl")
+    var kc = $("#kc").html();
+$("#dwn").attr('disabled',true);
+
+$("#dup").click(function(){
+    var val = $("#sl").val()
+    sl.val(parseInt(sl.val())+1)
+    if(parseInt(sl.val())!=1){
+        $('#dwn').attr('disabled',false)
+        console.log(val)
+    }
+})
+$("#dwn").click(function(){
+    sl.val(parseInt(sl.val())-1)
+    if(parseInt(sl.val())==1){
+        $('#dwn').attr('disabled',true)
+        
+
+    }
+})
+*/
+var add = document.getElementById("add");
+var min = document.getElementById("min");
+var sl = document.getElementById("sl").value;
+var dj = document.getElementById("dj").innerHTML;
+var kc = document.getElementById("kc").innerHTML;
+add.onclick=function(){
+    if(sl<kc){
+        sl++;
+        document.getElementById("sl").value=sl;
+        document.getElementById("bsum").innerHTML = sl*dj+'.00';
+    }
+}
+min.onclick=function(){
+    if(sl>1){
+        sl--;
+        document.getElementById("sl").value=sl;
+        document.getElementById("bsum").innerHTML = sl*dj+'.00';
+    }
+}
+</script>

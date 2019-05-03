@@ -11,7 +11,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?php echo $banner1['b_img'] ?>" alt="First slide">
+                    <img class="d-block w-100" src="<?php echo _UPLOAD_.$banner1['b_img'] ?>" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="back"><?php echo $banner1['b_titile'] ?></h5>
                         <a class="sp" href="">
@@ -22,7 +22,7 @@
 
                 <?php foreach($banner as $v) { ?>
                 <div class="carousel-item ">
-                    <img class="d-block w-100" src="<?php echo $v['b_img'] ?>" alt="First slide">
+                    <img class="d-block w-100" src="<?php echo _UPLOAD_.$v['b_img'] ?>" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="back"><?php echo $v['b_titile'] ?></h5>
                         <a class="sp" href="">
@@ -46,17 +46,17 @@
 
     <!-- product display start -->
     <div class="rec container mpz">
-        <a href="rec.html">产品展示</a> 
+        <a href="<?php echo _WEB_ ?>rec.html">产品展示</a> 
         <div class="row">
 
             <?php foreach($rec as $v)  { ?>
             <div class="col-lg-4">
                 <div class="card mbo">
-                    <img class="card-img-top" src="<?php echo $v['r_img'] ?>" alt="Card image cap">
+                    <img class="card-img-top" src="<?php echo  _UPLOAD_.$v['r_img'] ?>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $v['r_title'] ?></h5>
                         <p class="card-text"><?php echo $v['r_txt'] ?> </p>
-                        <a href="nesdm.html" class="btn btn-primary">了解详情</a>
+                        <a href="recmdet.php?rid=<?php echo $v['r_id'] ?>&rlid=<?php echo $v['rl_id'] ?>" class="btn btn-primary">了解详情</a>
                     </div>
                 </div>
             </div>
@@ -67,54 +67,65 @@
     <!-- product display end -->
     <!-- news list start -->
     <div class="new container mpz">
-        <a href="new.html">新闻动态</a> 
+        <a href="<?php echo _WEB_ ?>new.php">新闻动态</a> 
         <div class="row mh">
             <div class="col-lg-6">
                 <div class="card mbo htb">
-                    <img class="card card-img-top" src="<?php echo $newz['n_img'] ?>" alt="Card image cap">
+                    <img class="card card-img-top" src="<?php echo _UPLOAD_.$newz['n_img'] ?>" alt="Card image cap">
                     <div class="card-body feb">
                             <div class="pmo">
                                 <h5 class="card-title"><?php echo $newz['n_title'] ?></h5>
                                 <p class="card-text"><?php echo $newz['n_txt'] ?></p>
                             </div>
-                            <a href="xsy.html" class="btn btn-primary wds">了解详情</a>
+                            <a href="<?php echo _WEB_ ?>newdet.php?nid=<?php echo $newz['n_id'] ?>" class="btn btn-primary wds">了解详情</a>
                         </div>
                     </div>
             </div>
             <div class="col-lg-6">
                 <div class="card text-center">
-                    <nav>
+                    <nav id="csnav">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
                             <?php foreach($new_class as $v) { ?>
 
-                            <a class="nav-item nav-link <?php  if($v['nl_id']==$nlid) echo 'active' ?>" id="nav-home-tab" 
+                                <a class="nav-item nav-link <?php  if($v['nl_id']==$nlid) echo 'active' ?>" id="nav-home-tab" 
                                 data-toggle="tab" href="?nlid=<?php echo $v['nl_id'] ?>"
                                 role="tab" aria-controls="nav-home" aria-selected="true">
+
                                 <?php echo $v['nl_title'] ?></a>
 
                             <?php } ?>    
 
                         </div>
                     </nav>
+
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade  show active" id="nav-home" role="tabpanel"
                         aria-labelledby="nav-home-tab">
-                        <?php foreach($new as $v) { ?>
-                            <div class="card">
-                                <div class="card-body text-success tal">
-                                    <a href="nesdm.html" class="tdn">
-                                        <h5 class="card-title"><?php echo $v['n_title'] ?></h5>
-                                    </a>
-                                    <a href="nesdm.html" class="tdn">
-                                        <p class="card-text"><?php echo $v['n_txt'] ?></p>
-                                    </a>
-                                </div>
-                            </div>
-                            <?php } ?>
-
                         </div>
                     </div>
+
+                    <!-- <script src="jquery-1.11.3.min.js"></script> -->
+                    <script>
+                            $.get('ajax.php',{caid:1},function(result){
+                            $('#csnav').children().children().eq(0).addClass('active')
+                            $('#nav-home').append(result);
+                            })
+                        // $('#csu').append(result);
+                        $('#csnav').children().children().click(function(){
+                            var index = $(this).index()+1
+                            // alert(index)
+                            $('#csnav').children().removeClass('active')
+                            $(this).children().addClass('active')
+                            $.get('ajax.php',{nlid:index},function(result){
+                                // alert(result)
+                                $('#nav-home').empty()
+                                $('#nav-home').append(result);
+                            })
+                        })
+                    </script>
+        
+
                 </div>
             </div>
         </div>
@@ -122,11 +133,11 @@
     <!-- news list end -->
     <!-- jion us start  -->
     <div class="jion container mpz">
-        <a href="jion.html">加入我们</a> 
+        <a href="<?php echo _WEB_ ?>jion.php">加入我们</a> 
         <div class="row bg mpz pl ">
             <div class="col-lg-6 auto">
                 <h1>此时此刻 非你莫属</h1>
-                <a href="jion.html"><p class="btn btn-success">更多</p></a> 
+                <a href="<?php echo _WEB_ ?>jion.php"><p class="btn btn-success">更多</p></a> 
             </div>
             <div class="col-lg-6">
                 <div class="card">
@@ -136,7 +147,7 @@
                             <h5 class="card-title"><?php echo $v['j_title'] ?></h5>
                             <p class="card-text" width="80%"><?php echo date('Y-m-d ',$v['j_time']).substr($v['j_txt'],0,strrpos($v['j_txt'],'/')) ?></p>
                         </div>
-                        <a href="jion.html" class="btn btn-primary flotr">更多</a>
+                        <a href="<?php echo _WEB_ ?>jion.php" class="btn btn-primary flotr">更多</a>
                     </div>
                     <?php } ?>
                 </div>

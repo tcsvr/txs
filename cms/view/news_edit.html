@@ -1,0 +1,99 @@
+<?php include('view/common/header.html'); ?>
+<!-- End: Header -->
+
+<!-- Start: Main -->
+<div id="main">
+    <!-- Start: Sidebar -->
+    <?php include('view/common/sidebar.html'); ?>
+    <!-- End: Sidebar -->
+    <!-- Start: Content -->
+    <section id="content">
+        <div id="topbar" class="affix">
+            <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li class="active">修改资讯管理</li>
+            </ol>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-10 col-lg-8 center-column">
+                    <form action="" method="post" class="cmxform" enctype="multipart/form-data">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="panel-title">修改资讯新闻</div>
+                                <div class="panel-btns pull-right margin-left">
+                                    <a href="news_list.php?nlid=<?php echo $news['nl_id']  ?>"
+                                        class="btn btn-default btn-gradient dropdown-toggle"><span
+                                            class="glyphicon glyphicon-chevron-left"></span></a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">新闻分类</span>
+                                            <select name="nl_id" id="standard-list1" class="form-control">
+                                                <option value="0" selected>请选择</option>
+                                                <?php foreach($newclass as $v){ ?>
+                                                <option <?php if($v['nl_id']==$nlid) echo 'selected'; ?>  value="<?php echo $v['nl_id'] ?>" >
+                                                    <?php echo $v['nl_title'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <span style="color:red; display: none;">请选择分类</span>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">资讯标题</span>
+                                            <input type="text" name="n_title" value="<?php echo $news['n_title'] ?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">资讯简介</span>
+                                            <input type="text" name="n_txt" value="<?php echo $news['n_txt'] ?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group"><img src="<?php echo _THUMB_.$news['n_thumb'] ?>" alt="缩略图"></div>
+
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">资讯图片</span>
+                                            <span class="form-control" style="padding:2px;">
+                                                <input type="file" name="upload" value="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">发布时间</span>
+
+                                                <input type="text" name="n_time" value="<?php echo date( 'Y-m-d h:i:s',time()) ?>" class="form-control">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group"><span>&emsp;是否显示</span>
+                                                &emsp;<input type="checkbox" value="1" name="n_isshow" class="cbox" <?php echo $news['n_isshow']==1?'checked':''; ?>>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <script type="text/plain" id="myEditor" style="width:100%;height:200px;">
+                                        <?php echo $news['n_detai']; ?>
+                                    </script>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <input type="submit" value="提交" class="submit btn btn-blue">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </section>
+    <!-- End: Content -->
+</div>
+<!-- End: Main -->
+<?php include('view/common/footer.html'); ?>

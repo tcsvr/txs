@@ -1,0 +1,92 @@
+<?php include('view/common/header.html'); ?>
+<!-- End: Header -->
+
+<!-- Start: Main -->
+<div id="main">
+    <!-- Start: Sidebar -->
+    <?php include('view/common/sidebar.html'); ?>
+    <!-- End: Sidebar -->
+    <!-- Start: Content -->
+    <section id="content">
+        <div id="topbar" class="affix">
+            <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li class="active">产品管理</li>
+            </ol>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-10 col-lg-8 center-column">
+                    <form action="" method="post" class="cmxform" enctype="multipart/form-data">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="panel-title">修改产品</div>
+                                <div class="panel-btns pull-right margin-left">
+                                    <a href="rec_list.php?rlid=<?php echo $rlid; ?>"
+                                        class="btn btn-default btn-gradient dropdown-toggle"><span
+                                            class="glyphicon glyphicon-chevron-left"></span></a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">产品分类</span>
+                                            <select name="rl_id" id="standard-list1" class="form-control">
+                                                    <option value="0">请选择</option>
+                                                <?php foreach($reclass as $v){ ?>
+                                                <option <?php if($v['rl_id']==$rlid) echo 'selected'; ?> 
+                                                    value="<?php echo $v['rl_id'] ?>" ><?php echo $v['rl_title'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">产品标题</span>
+                                            <input type="text" name="r_title" value="<?php echo $rec['r_title'] ?>" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">产品简介</span>
+                                            <input type="text" name="r_txt" value="<?php echo $rec['r_txt'] ?>" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"><img src="<?php echo _THUMB_.$rec['r_thumb'] ?>" alt="缩略图"></div>
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">产品图片</span>
+                                            <span class="form-control" style="padding:2px;">
+                                                <input type="file" name="upload" value="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group"><span class="input-group-addon">是否显示</span>
+                                            <span class="form-control">
+                                                &emsp;<input type="checkbox" value="1" name="r_isshow" class="cbox" <?php echo $rec['r_isshow']==1?'checked':''; ?>>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <script type="text/plain" id="myEditor" style="width:100%;height:200px;">
+                                    <?php echo $rec['r_txt']; ?>
+                                    </script>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <input type="submit" value="提交" class="submit btn btn-blue">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </section>
+    <!-- End: Content -->
+</div>
+<!-- End: Main -->
+<?php include('view/common/footer.html'); ?>

@@ -1,0 +1,83 @@
+<aside id="sidebar" class="affix">
+  <div id="sidebar-search">
+    <div class="sidebar-toggle"><span class="glyphicon glyphicon-resize-horizontal"></span></div>
+  </div>
+  <div id="sidebar-menu">
+    <ul class="nav sidebar-nav">
+      <li>
+        <a href="index.php"><span class="glyphicons glyphicon-home"></span><span class="sidebar-title">后台首页</span></a>
+      </li>
+
+      <li>
+        <a href="nav_list.php"><span class="glyphicons glyphicon-list"></span><span
+            class="sidebar-title">导航管理</span></a>
+      </li>
+      <li>
+        <a href="banner_list.php"><span class="glyphicons glyphicon-list"></span><span
+            class="sidebar-title">轮播图管理</span></a>
+      </li>
+      <li>
+        <a href="reclass_list.php"><span class="glyphicons glyphicon-list"></span><span
+            class="sidebar-title">产品分类管理</span></a>
+      </li>
+      <li> <a href="#sideEight" class="accordion-toggle <?php if(isset($_GET['rlid'])) echo 'menu-open'; ?>"><span
+            class="glyphicons glyphicon-list"></span><span class="sidebar-title">产品管理</span><span
+            class="caret"></span></a>
+        <ul class="nav sub-nav" id="sideEight" style="">
+
+          <?php foreach($reclass as $v){ ?>
+          <li class="<?php if($v['rl_id']==$rlid) echo 'active'; ?>">
+            <a href="rec_list.php?rlid=<?php echo $v['rl_id'] ?>"><span class="glyphicons glyphicon-record"></span>
+              <?php echo $v['rl_title'] ?></a></li>
+          <?php } ?>
+        </ul>
+      </li>
+
+      <li>
+        <a href="us.php"><span class="glyphicons glyphicon-list"></span><span class="sidebar-title">关于我们管理</span></a>
+      </li>
+      
+      <li>
+          <a href="newclass_list.php"><span class="glyphicons glyphicon-list"></span><span
+              class="sidebar-title">新闻分类管理</span></a>
+        </li>
+        <li> <a href="#sideEight" class="accordion-toggle <?php if(isset($_GET['nlid'])) echo 'menu-open'; ?>"><span
+              class="glyphicons glyphicon-list"></span><span class="sidebar-title">新闻管理</span><span
+              class="caret"></span></a>
+          <ul class="nav sub-nav" id="sideEight" style="">
+  
+            <?php foreach($newclass as $v){ ?>
+            <li class="<?php if($v['nl_id']==$nlid) echo 'active'; ?>">
+              <a href="news_list.php?nlid=<?php echo $v['nl_id'] ?>"><span class="glyphicons glyphicon-record"></span>
+                <?php echo $v['nl_title'] ?></a></li>
+            <?php } ?>
+          </ul>
+        </li>
+        
+      <li>
+        <a href="contact.php"><span class="glyphicons glyphicon-list"></span><span class="sidebar-title">联系我们</span></a>
+      </li>
+      <li>
+        <a href="jion.php"><span class="glyphicons glyphicon-list"></span><span class="sidebar-title">加入我们</span></a>
+      </li>
+      
+      <!-- <li>
+        <a href="user.php"><span class="glyphicons glyphicon-list"></span><span class="sidebar-title">会员管理</span></a>
+      </li> -->
+
+      <!-- <li>
+        <a href="message.php"><span class="glyphicons glyphicon-list"></span><span class="sidebar-title">留言管理</span></a>
+      </li> -->
+
+      <?php if($_SESSION['adminid']==1){ ?>
+
+        <li>
+          <a href="admin_list.php"><span class="glyphicons glyphicon-list"></span><span
+              class="sidebar-title">系统管理员</span></a>
+        </li>   
+        
+      <?php } ?>
+
+    </ul>
+  </div>
+</aside>
