@@ -1,0 +1,106 @@
+<!-- <link rel="stylesheet" href="css/user_info.css"> -->
+<?php include('view/common/header.html'); ?>
+<div class="container">
+	<div class="main_nav">
+		<nav>
+			<a href="index.php">首页</a>
+			&gt;
+			<a href="user_info.php">用户中心</a>
+		</nav>
+	</div>
+	<div class="main">
+		<div class="main_left">
+			<div class="phone">
+				<div>
+					<img src="<?php echo _THUMB_.$userinfo['u_photo2'] ?>" alt="">
+				</div>
+				<p><?php echo $userinfo['u_name'] ?></p>
+			</div>
+
+			<a href="user_info.php">
+				<p class="p1">基本信息</p>
+			</a>
+
+			<!-- <a href="message.php"><p>客户留言 </p></a> -->
+
+		</div>
+		<div class="main_right">
+			<h1><a href="change_message.php" title="修改基本信息">基本信息&emsp;<img src="images/message.jpg" alt=""></a></h1>
+			<form action="" >
+				<table>
+					<tr>
+						<td>用户名</td>
+						<td>
+							<input readonly="readonly" class="txt" value="<?php echo $userinfo['u_name'] ?>" type="text"
+								placeholder="请输入用户名" name="" id="">
+						</td>
+					</tr>
+					<tr>
+						<td>真实姓名</td>
+						<td>
+							<input readonly="readonly" class="txt" type="text" value="<?php echo $userinfo['u_real'] ?>"
+								placeholder="未写" name="" id="">
+						</td>
+					</tr>
+					<tr>
+						<td>性别</td>
+						<td>
+							<?php if($userinfo['u_sex'] == 1){ ?>
+							<input disabled="disabled" type="radio" name="sex" id="man" checked="checked" value="1">
+							<label for="man">男</label>
+							<?php } else{ ?>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input disabled="disabled" type="radio" name="sex" id="woman" checked="checked" value="0">
+							<label for="woman">女</label>
+							<?php } ?>
+						</td>
+					</tr>
+					<tr>
+						<td>手机</td>
+						<td>
+							<input readonly="readonly" class="txt" type="text"
+								value="<?php echo $userinfo['u_phone'] ?>" placeholder="请输入手机号" name="" id="">
+						</td>
+					</tr>
+					<tr>
+						<td>E-mail</td>
+						<td>
+							<input readonly="readonly" class="txt" type="text"
+								value="<?php echo $userinfo['u_email'] ?>" placeholder="请输入邮箱" name="" id="">
+						</td>
+					</tr>
+					<tr>
+						<td>生日</td>
+						<td>
+							<input readonly="readonly" class="txt" type="text"
+								value="<?php echo $userinfo['u_birthday'] ?>" placeholder="请输入您的生日" name="" id="">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="bottom"></div>
+</div>
+
+
+<!-- footer start -->
+<?php include('view/common/footer.html') ?>
+<!-- footer end -->
+
+<script>
+	//滚动条事件改变导航背景色
+	var head_scroll = document.getElementById('head_scroll');
+
+	document.onscroll = function () {
+		var scroll_top = document.body.scrollTop || document.documentElement.scrollTop;
+		if (scroll_top > $('#con').height()) {
+			head_scroll.style.background = 'rgba(21,24,27,1)';
+		}
+		if (scroll_top < $('#con').height()) {
+			head_scroll.style.background = 'rgba(21,24,27,0.3)';
+		}
+
+	}
+
+</script>
