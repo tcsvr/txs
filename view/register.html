@@ -1,89 +1,162 @@
-
 <!-- <link rel="stylesheet" href="css/register.css"> -->
 
-	<?php include('view/common/header.html'); ?>
-	<div class="container clear">
-			<div class="log clear">
-			<div class="phone"><img src="images/user_01.gif" alt=""></div>
-			<h1>用户登录</h1>
-			<form action="register.php" method="post">	
-				<div class="clear"></div>
-				<p class="txt_input txt_inp01">
-					<input type="text" name="username" placeholder="用户名" id="">
-					<span class="tip"></span><br>
-				</p>
-				<p class="txt_input txt_inp02">
-					<input type="password" name="pass" placeholder="密 码" id="">
-				</p>
-				<p class="txt_input txt_inp02">
-					<input type="password" name="repass" placeholder="重复密码" id="">
-				</p>
-				<!-- <p class="txt_input txt_inp03">
+<?php include('view/common/header.html'); ?>
+<div class="container mt">
+	<div class="log clear">
+		<div class="phone"><img src="images/user_01.gif" alt=""></div>
+		<h1>用户注册</h1>
+		<form action="register.php" method="post">
+			<div class="clear"></div>
+			<p class="txt_input txt_inp01">
+				<input type="text" name="username" placeholder="用户名" id="">
+				<span class="tip"></span><br>
+			</p>
+			<p class="txt_input txt_inp02">
+				<input type="password" name="pass" placeholder="密 码" id="cswp">
+				<span class="tip1"></span><br>
+			</p>
+			<p class="txt_input txt_inp02">
+				<input type="password" name="repass" placeholder="重复密码" id="">
+				<span class="tip2"></span><br>
+			</p>
+			<!-- <p class="txt_input txt_inp03">
 					<input type="text" name="phone" placeholder="手机号" id="">
 				</p>
 				<div class="pas">
 					<input type="text" name="demo" id="" placeholder="手机验证码">
 					<a href="javascript:;">获取验证码</a>
 				</div> -->
-				<input class="submit" type="submit" value="立即注册">
-				
-			</form>
-		</div>
+			<input class="csw_sub" type="submit" value="立即注册">
 
+		</form>
 	</div>
 
+</div>
 
-	<!-- footer start -->
-<?php // include('view/common/footer.html') ?>
+
+<!-- footer start -->
+<?php include('view/common/footer.html') ?>
 <!-- footer end -->
 
 <!-- 导航滚动条 -->
 <script src='js/nav_scroll.js'></script>
 <script>
-	
-		$('input[name="username"]').blur(function(){
-			// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
-			var username = $(this).val();
-			$.post('reg.php',{username:username,},function(result){
-				alert(result)
-				// if(result==1){
-				// 	$('.tip').text('√').css({color:'green',fontWeight:'900'});
-				// 	// alert('OK');
-				// }else{
-				// 	$('.tip').text('用户名已被占用！').css({color:'red',fontWeight:'900'});
-				// 	// alert('用户名已被占用！');
-				// }
-			});
+	$('input[name="username"]').blur(function() {
+		// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
+		var username = $(this).val();
+		$.post('reg.php', {
+			username: username
+		}, function(result) {
+			// alert(result)
+			if (result == 1) {
+				$('.tip').text('√').css({
+					color: 'green',
+					fontWeight: '900'
+				});
+				// alert('OK');
+			} else if (result == 2) {
+				$('.tip').text('用户名不能为空！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else if (result == 3) {
+				$('.tip').text('请输入的英文、数字、下划线！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else if (result == 4) {
+				$('.tip').text('请输入4—16位的用户名！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else {
+				$('.tip').text('用户名已被占用！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			}
 		});
-	
-		$('input[name="pass"]').blur(function(){
-			// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
-			var pass = $(this).val();
-			$.post('reg.php',{pass:pass,},function(result){
-				alert(result)
-				// if(result==1){
-				// 	$('.tip').text('√').css({color:'green',fontWeight:'900'});
-				// 	// alert('OK');
-				// }else{
-				// 	$('.tip').text('用户名已被占用！').css({color:'red',fontWeight:'900'});
-				// 	// alert('用户名已被占用！');
-				// }
-			});
+	});
+
+	$('input[name="pass"]').blur(function() {
+		// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
+		var pass = $(this).val();
+		$.post('regp.php', {
+			pass: pass
+		}, function(result) {
+			// alert(result)
+			if (result == 1) {
+				$('.tip1').text('√').css({
+					color: 'green',
+					fontWeight: '900'
+				});
+				// alert('OK');
+			} else if (result == 2) {
+				$('.tip1').text('密码不能为空！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else if (result == 3) {
+				$('.tip1').text('请输入4—16位的密码！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else {
+				$('.tip1').text('注册失败').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			}
 		});
-	
-		$('input[name="repass"]').blur(function(){
-			// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
-			var repass = $(this).val();
-			$.post('reg.php',{repass:repass,},function(result){
-				alert(result)
-				// if(result==1){
-				// 	$('.tip').text('√').css({color:'green',fontWeight:'900'});
-				// 	// alert('OK');
-				// }else{
-				// 	$('.tip').text('用户名已被占用！').css({color:'red',fontWeight:'900'});
-				// 	// alert('用户名已被占用！');
-				// }
-			});
+	});
+
+	$('input[name="repass"]').blur(function() {
+		// 失去焦点，获取值，把值用ajax的方式传到数据处理页做验证
+		var repass = $(this).val();
+		var pass = $('#cswp').val();
+		// alert(repass);
+		$.post('regpr.php', {
+			repass: repass,
+			pass: pass
+		}, function(result) {
+			// alert(result)
+			if (result == 1) {
+				$('.tip2').text('√').css({
+					color: 'green',
+					fontWeight: '900'
+				});
+				// alert('OK');
+			} else if (result == 2) {
+				$('.tip2').text('确认密码不能为空！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else if (result == 0) {
+				$('.tip2').text('两次密码不一致！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			} else {
+				$('.tip2').text('两次！').css({
+					color: 'red',
+					fontWeight: '900'
+				});
+				// alert('用户名已被占用！');
+			}
 		});
-	</script>
+	});
+
+	$('#tip').focus(function(){
+		$('#tip').text();
+	})
 	
+</script>

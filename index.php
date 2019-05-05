@@ -14,7 +14,7 @@ $banner = $mysql->getAll();
 // pre($banner);
 
 //产品展示
-$mysql->sql = "SELECT * FROM tv_rec ORDER BY r_id DESC";
+$mysql->sql = "SELECT * FROM tv_rec ORDER BY r_id DESC LIMIT 6";
 $rec = $mysql->getAll();
 // pre($rec);
 
