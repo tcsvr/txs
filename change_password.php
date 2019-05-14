@@ -7,8 +7,8 @@ if(!$islog){
 	header('location:login.php');
 }else{
     $uid = $_COOKIE['uid'];
-    $sql = "SELECT * FROM wd_user WHERE u_id = '{$uid}'";
-    $userinfo = getOne($sql);
+    $mysql->sql = "SELECT * FROM tv_user WHERE u_id = '{$uid}'";
+    $userinfo =  $mysql->getOne();
 }
 $isshow = "none";
 $tip ='';
@@ -33,7 +33,7 @@ if($_POST){
     }else{
         $changepassword = md5($_POST['changepassword']);
 
-        $sql = "UPDATE wd_user SET  `u_password`= '{$changepassword}'  WHERE  u_id = '{$uid}'";
+        $sql =  $mysql->sql = "UPDATE tv_user SET  `u_password`= '{$changepassword}'  WHERE  u_id = '{$uid}'";
 
         $bool = mysql_query($sql);
         if($bool && mysql_affected_rows()){

@@ -7,10 +7,11 @@ $contact = $mysql->getOne();
 
 // pre($contact);
 
+setcookie('contact',$contact['a_title']);
+setcookie('cont',$contact['a_content']);
+
+   pre($_COOKIE['cont']);
 
 
-
-
-
-include('view/common/footer.html');
+// include('view/common/footer.html');
 ?>

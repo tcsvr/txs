@@ -7,12 +7,12 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>index.php">主页</a></li>
             <li class="breadcrumb-item"><a href="<?php echo _WEB_ ?>rec.php">产品展示</a></li>
-            <li class="breadcrumb-item active" aria-current="page">社交网络</li>
+            <li class="breadcrumb-item active" aria-current="page"><?php echo $recl['rl_title'] ?></li>
         </ol>
         <a href="">更多</a>
     </nav>
     <div class="rec container mpz">
-        <h2 class="po">热门社交网络</h2>
+        <h2 class="po"><?php echo $recl['rl_title'] ?></h2>
         <div class="row">
         <?php foreach ($rec as $v) { ?>
             <div class="col-lg-4">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <?php } ?>
+        <?php } ?>
         </div>
     </div>
     <nav aria-label="Page navigation example">

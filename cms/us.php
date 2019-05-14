@@ -22,7 +22,7 @@ if($_POST){
 		if(!in_array($v, $submitimg[1])){
 			
 			$delpath = str_replace(_WEB_, _ROOT_, $v);
-			unlink($delpath);
+			unlink($delpath); 
 
 		}
 	}

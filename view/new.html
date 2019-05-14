@@ -12,6 +12,7 @@
     </nav>
     <!-- news list start -->
     <div class="new container mpz">
+
             <a href="<?php echo _WEB_ ?>new.php">新闻动态</a> 
             <div class="row mh">
                 <div class="col-lg-6">
@@ -26,6 +27,7 @@
                             </div>
                         </div>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="card text-center">
                         <nav id="csnav">
@@ -37,7 +39,7 @@
                                     data-toggle="tab" href="?nlid=<?php echo $v['nl_id'] ?>"
                                     role="tab" aria-controls="nav-home" aria-selected="true">
     
-                                    <?php echo $v['nl_title'] ?></a>
+                                <?php echo $v['nl_title'] ?></a>
     
                                 <?php } ?>    
     
@@ -51,10 +53,11 @@
                         </div>
     
                         <!-- <script src="jquery-1.11.3.min.js"></script> -->
+
                         <script>
                                 $.get('ajax.php',{caid:1},function(result){
-                                $('#csnav').children().children().eq(0).addClass('active')
-                                $('#nav-home').append(result);
+                                    $('#csnav').children().children().eq(0).addClass('active')
+                                    $('#nav-home').append(result);
                                 })
                             // $('#csu').append(result);
                             $('#csnav').children().children().click(function(){
@@ -77,5 +80,7 @@
         </div>
         <!-- news list end -->
         <!-- footer start -->
+
 <?php include('view/common/footer.html') ?>
-<!-- footer end -->
+
+        <!-- footer end -->

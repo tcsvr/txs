@@ -1,23 +1,18 @@
 <?php
 include('include/init.php');
 
-
-// $sql = "SELECT * FROM wd_message ORDER BY m_time DESC";
-// $message = getAll($sql);
-
-
 $current = isset($_GET['page'])?$_GET['page']:1;
 $limit = 4;  //每页显示个数
 $start = ($current - 1) * $limit;
 $size = 3; //页数
 
 // 获取总条数
-$sql = "SELECT COUNT(n_id) AS count FROM wd_news";
+$sql = "SELECT COUNT(m_id) AS count FROM tv_message";
 $count = getOne($sql);
 $count = $count['count'];
 
 //
-$sql = "SELECT * FROM wd_message ORDER BY m_time DESC LIMIT $start,$limit";
+$sql = "SELECT * FROM tv_message ORDER BY m_time DESC LIMIT $start,$limit";
 $message = getAll($sql);
 
 
@@ -32,7 +27,7 @@ if($_POST){
     //转化为字符串
     $midstr = implode(',',$midarr);
     //用条件删除多个
-    $sql = "DELETE FROM wd_message WHERE m_id IN($midstr)";
+    $sql = "DELETE FROM tv_message WHERE m_id IN($midstr)";
     //执行
     $bool = mysql_query($sql);
 

@@ -2,21 +2,21 @@
 include('include/init.php');
 
 
-$sql = "SELECT * FROM wd_user ORDER BY lasttime ASC";
+$sql = "SELECT * FROM tv_user ORDER BY lasttime ASC";
 $user = getAll($sql);
 
 $current = isset($_GET['page'])?$_GET['page']:1;
-$limit = 2;  //每页显示个数
+$limit = 3;  //每页显示个数
 $start = ($current - 1) * $limit;
-$size = 2; //页数
+$size = 3; //页数
 
 // 获取总条数
-$sql = "SELECT COUNT(n_id) AS count FROM wd_news";
+$sql = "SELECT COUNT(u_id) AS count FROM tv_user";
 $count = getOne($sql);
 $count = $count['count'];
 
 //
-$sql = "SELECT * FROM wd_user ORDER BY lasttime ASC LIMIT $start,$limit";
+$sql = "SELECT * FROM tv_user ORDER BY lasttime ASC LIMIT $start,$limit";
 $user = getAll($sql);
 
 
@@ -31,7 +31,7 @@ if($_POST){
     //转化为字符串
     $uidstr = implode(',',$uidarr);
     //用条件删除多个
-    $sql = "DELETE FROM wd_user WHERE u_id IN($uidstr)";
+    $sql = "DELETE FROM tv_user WHERE u_id IN($uidstr)";
     //执行
     $bool = mysql_query($sql);
 

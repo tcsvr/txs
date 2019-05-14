@@ -1,17 +1,252 @@
-<?php include('view/common/meta.html'); ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>天下视</title>
+	
+
 <link rel="stylesheet" href="<?php echo _CSS_; ?>change_message.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/jq/jquery-ui.min.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
+<link rel="stylesheet" href="/jq/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
-  </script>
+
+</script>
+
+
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.css" rel="stylesheet">
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script> -->
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+        integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="<?php echo _CSS_ ?>style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        div {
+            text-align: center;
+            clear: both;
+        }
+
+        #csw_img {
+            width: 90px;
+            height: 50px;
+            float: left;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        #csw_box {
+            width: 100%;
+            height: 700px;
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            position: fixed;
+            top: 0;
+            display: none;
+            z-index: 9999;
+        }
+
+        #csw_box #csw_content {
+            width: 355px;
+            height: 400px;
+            background: #fff;
+            margin: 100px auto 0;
+
+        }
+
+        #close {
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+            float: right;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: #ccc;
+        }
+
+        #close:hover {
+            color: #fff;
+            background: #333;
+        }
+
+        #csw_content input {
+            position: relative;
+            width: 300px;
+            height: 40px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            text-indent: 20px;
+        }
+
+        #hid_user {
+            display: none;
+        }
+        
+        #csw_content #csw_but{
+            text-align: center;
+           
+            text-indent: 0;
+        }
+        #csw_reg{
+            position: relative;
+            right: -60px;
+            top: 50px;
+        }
+        .csw_tle{
+            position: relative;
+            right: 40px;
+            top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+
 <body>
-	<div class="container">
-			<?php include('view/common/header.html'); ?>
+
+    <div id="csw_box">
+        <div id="csw_content">
+
+            <span title="关闭" id="close">X</span>
+            <div><img id="csw_img" src="images/logo.jpg" alt="">
+
+                <span class="csw_tle">天下视</span>
+            </div>
+
+            <form action="">
+                <input placeholder="用户名" type="text" name="" id="username">
+                <input placeholder="密 码" type="password" name="" id="password">
+                <input type="button" value="登 录 " id="csw_but">
+            </form>
+            <div id="csw_reg">
+                <span>如果没有请先</span> <a href="register.php">注册</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+            <a class="navbar-brand" href="<?php echo _WEB_ ?>index.php"><img src="images/logo.jpg" alt="天下视"
+                    class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="<?php echo _WEB_ ?>index.php">主页<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="<?php echo _WEB_ ?>us.php">关于我们<span
+                                class="sr-only">(current)</span></a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="<?php echo _WEB_ ?>rec.php" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            产品展示
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="<?php echo _WEB_ ?>rec.php">产品展示</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo _WEB_ ?>rec.php">社交网络</a>
+                            <a class="dropdown-item" href="<?php echo _WEB_ ?>game.php">VR 游戏</a>
+                            <a class="dropdown-item" href="<?php echo _WEB_ ?>move.php">VR 影视</a>
+                            <a class="dropdown-item" href="<?php echo _WEB_ ?>recsb.php">VR 设备</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="<?php echo _WEB_ ?>new.php">新闻资讯</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo _WEB_ ?>jion.php">加入我们</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <a class="nav-link disabled" href="<?php echo _WEB_ ?>jion.php">联系我们</a>
+                    <!-- <i class="fas fa-phone-volume"></i>
+                    <a class="nav-link" href="#">400-0000-0000</a> -->
+                    <?php if(!isset($_COOKIE['islog']) || empty($_COOKIE['islog'])){ ?>
+                    <a href="javascript:;" id="login">登录</a>
+                    <a href="" id="hid_user"></a>
+                    <?php }else{ ?>
+                    <a href="user_info.php"><?php echo isset($_COOKIE['username'])?$_COOKIE['username']:''; ?></a>
+                    <a href="out.php">&emsp;退出</a>
+                    <?php } ?>
+                    <!-- <a href="javascript:;" id="login">登陆</a>&emsp;
+                    <a href="javascript:;">注册</a> -->
+                </form>
+            </div>
+        </nav>
+    </header>
+    <script>
+        // alert($.cookie('username'));
+        // js获取窗口的高
+        var dh = document.documentElement.clientHeight;
+        // 把窗口的高赋值给遮挡层
+        $('#csw_box').css('height', dh + 'px');
+        // 点击登录，显示遮挡层
+        $('#login').click(function () {
+            $('#csw_box').css({ display: 'block' });
+        });
+
+        $('#close').click(function () {
+            $('#csw_box').css({ display: 'none' });
+        });
+
+        $('#csw_but').click(function () {
+            // 获取表单元素值
+            var username = $('#username').val();
+            var password = $('#password').val();
+            $.post(
+                'login.php',
+                { username: username, password: password },
+                function (result) {
+
+                    // alert(result)
+                    if (result == 1) {
+                        $('#login').css('display', 'none');
+                        $('#hid_user').text(username);
+                        $('#hid_user').attr('href', 'user_info.php');
+                        $('#hid_user').css('display', 'inline');
+                        $('#csw_box').css({ display: 'none' });
+                    } else {
+                        alert('用户名密码错误');
+                    }
+                }
+            );
+            // 返回 登录状态
+        });
+    </script>
+
+
+
+
+  <?php //include('view/common/header.html'); ?>
+
+	<div class="container mt">
 		<div class="main_nav">
 			<nav>
 				<a href="index.php">首页</a>
@@ -36,7 +271,7 @@
 				</div>
 
 				<a href="user_info.php"><p class="p1">基本信息</p></a> 
-				<a href="message.php"><p>客户留言 </p></a>
+				<!-- <a href="message.php"><p>客户留言 </p></a> -->
 			</div>
 			<div class="main_right">
 				<h1>基本信息修改</h1>
@@ -118,15 +353,11 @@
 			</div>
 		</div>
 		<div class="bottom"></div>
-		<div class="foot">
-			<p>粤ICP备12022584号-3</p>
-			<p>广州文豆网络科技有限公司 Copyright 2009-2015 ,All Rights Reserved wengdo</p>
-		</div>
 	</div>
-</body>
-</html>
+		<?php include('view/common/footer.html'); ?>
+
 <!-- 导航滚动条 -->
-<script src='js/nav_scroll.js'></script>
+<!-- <script src='js/nav_scroll.js'></script> -->
 <script src='js/chang_message.js'></script>
 <script src='js/upload.js'></script>
 <script>

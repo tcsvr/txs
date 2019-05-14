@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/user_info.css">
 <?php include('view/common/header.html'); ?>
-<div class="container">
+<div class="container mt">
 	<div class="main_nav">
 		<nav>
 			<a href="<?php echo _WEB_ ?>index.php">首页</a>
@@ -8,11 +8,11 @@
 			<a href="<?php echo _WEB_ ?>user_info.php">用户中心</a>
 		</nav>
 	</div>
-	<div class="main mt">
+	<div class="main">
 		<div class="main_left">
 			<div class="phone">
 				<div>
-					<img src="<?php echo _THUMB_.$userinfo['u_photo1'] ?>" alt="">
+					<img src="<?php echo _THUMB_.$userinfo['u_photo2'] ?>" alt="">
 				</div>
 				<p><?php echo $userinfo['u_name'] ?></p>
 			</div>

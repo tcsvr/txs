@@ -27,7 +27,7 @@ if($_POST){
 		}
 	}
 
-	$sql = "UPDATE tv_article SET `a_title`='{$a_title}',`a_content`='{$a_content}' WHERE a_id=1";
+	$sql = "UPDATE tv_article SET `a_title`='{$a_title}',`a_content`='{$a_content}' WHERE a_id=2";
 
 	$bool = mysql_query($sql);
 	alert('已保存');

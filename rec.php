@@ -2,11 +2,11 @@
 include('include/init.php');
 
 
-// $mysql->sql = "SELECT * FROM tv_rec WHERE rl_id = 1 ORDER BY r_id DESC";
+$mysql->sql = "SELECT * FROM tv_rec_class WHERE rl_id = 1 ";
 
-// $rec = $mysql->getAll();
+$recl = $mysql->getOne();
 
-// pre($us);
+// pre($recl);
 
 // 分页类的参数
 $current = isset($_GET['page'])?$_GET['page']:1;

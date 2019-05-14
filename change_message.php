@@ -48,7 +48,7 @@ if($_POST){
 
         if(!isset($_FILES['upload']['name']) || empty($_FILES['upload']['name'])){
 
-            $mysql->sql = "UPDATE tv_user SET  `u_name`= '{$u_name}',`u_sex`= '{$u_sex}',
+            $sql = $mysql->sql = "UPDATE tv_user SET  `u_name`= '{$u_name}',`u_sex`= '{$u_sex}',
             `u_real`= '{$u_real}',`u_phone`= '{$u_phone}', `u_email`='{$u_email}', 
             `u_birthday`='{$u_birthday}' 
             WHERE  u_id = '{$uid}' ";
@@ -76,7 +76,7 @@ if($_POST){
         
         $p_thumb = thumb_img($img,$son_width,$son_height,$url,$thumpath); //我们要的数据 缩略图
 
-        $mysql->sql = "UPDATE tv_user SET  `u_name`= '{$u_name}',`u_sex`= '{$u_sex}',
+        $sql = $mysql->sql = "UPDATE tv_user SET  `u_name`= '{$u_name}',`u_sex`= '{$u_sex}',
         `u_real`= '{$u_real}',`u_phone`= '{$u_phone}', `u_email`='{$u_email}', 
         `u_birthday`='{$u_birthday}' ,`u_photo1`='{$p_img}' ,`u_photo2`='{$p_thumb}' 
         WHERE  u_id = '{$uid}' ";
@@ -92,7 +92,8 @@ if($_POST){
          header('Location:change_message.php');
          // alert('修改成功','change_message.php');
      }else{
-         alert('请修改','change_message.php');
+         echo 1;
+        //  alert('请修改','change_message.php');
      }
      
 	
